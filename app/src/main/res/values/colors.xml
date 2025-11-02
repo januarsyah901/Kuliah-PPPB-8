@@ -1,5 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Base Colors -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Primary Colors - Medium Blue -->
+    <color name="primary">#42A5F5</color>
+    <color name="primary_dark">#2196F3</color>
+    <color name="primary_light">#90CAF9</color>
+    <color name="primary_variant">#1E88E5</color>
+
+    <!-- Secondary Colors -->
+    <color name="secondary">#42A5F5</color>
+    <color name="secondary_dark">#2196F3</color>
+    <color name="secondary_light">#90CAF9</color>
+    <color name="secondary_variant">#1E88E5</color>
+
+    <!-- Accent Color -->
+    <color name="accent">#42A5F5</color>
+    <color name="accent_light">#90CAF9</color>
+
+    <!-- Background Colors -->
+    <color name="background_light">#FFFFFF</color>
+    <color name="surface_light">#FFFFFF</color>
+    <color name="surface_variant_light">#F5F5F5</color>
+
+    <!-- Background Colors - Dark Mode -->
+    <color name="background_dark">#121212</color>
+    <color name="surface_dark">#1E1E1E</color>
+    <color name="surface_variant_dark">#2C2C2C</color>
+
+    <!-- Text Colors - On Light Blue -->
+    <color name="text_on_primary">#FFFFFF</color>
+    <color name="text_primary_light">#212121</color>
+    <color name="text_secondary_light">#757575</color>
+    <color name="text_hint_light">#BDBDBD</color>
+
+    <!-- Text Colors - Dark Mode -->
+    <color name="text_primary_dark">#FFFFFF</color>
+    <color name="text_secondary_dark">#B0B0B0</color>
+    <color name="text_hint_dark">#808080</color>
+
+    <!-- Status Colors -->
+    <color name="success">#4CAF50</color>
+    <color name="error">#F44336</color>
+    <color name="warning">#FF9800</color>
+    <color name="info">#81D4FA</color>
+
+    <!-- Overlay & Shadow -->
+    <color name="overlay_dark">#80000000</color>
+    <color name="overlay_light">#40000000</color>
+    <color name="shadow">#20000000</color>
+
+    <!-- Divider -->
+    <color name="divider_light">#E0E0E0</color>
+    <color name="divider_dark">#424242</color>
+
+    <!-- Card & Elevated Surface -->
+    <color name="card_background_light">#FFFFFF</color>
+    <color name="card_background_dark">#2C2C2C</color>
 </resources>

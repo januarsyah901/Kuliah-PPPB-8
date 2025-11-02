@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class LoginActivity : AppCompatActivity() {
@@ -18,12 +17,13 @@ class LoginActivity : AppCompatActivity() {
 
         login.setOnClickListener {
             if (username.text.toString() == "Admin" && password.text.toString() == "Admin") {
+                ToastHelper.showCustomToast(this, "Login successful!", ToastHelper.ToastType.SUCCESS)
                 val intent = Intent(this, MainActivity::class.java)
                 intent.putExtra("USERNAME", username.text.toString())
                 startActivity(intent)
                 finish()
             } else {
-                Toast.makeText(this, "Invalid Credentials", Toast.LENGTH_SHORT).show()
+                ToastHelper.showCustomToast(this, "Invalid credentials", ToastHelper.ToastType.ERROR)
             }
         }
     }

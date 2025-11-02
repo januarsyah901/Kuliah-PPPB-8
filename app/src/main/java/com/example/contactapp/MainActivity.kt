@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -43,33 +42,30 @@ class MainActivity : AppCompatActivity() {
         }, {
             contacts.remove(it)
             adapter.notifyDataSetChanged()
-            Toast.makeText(this, "Contact deleted", Toast.LENGTH_SHORT).show()
+            ToastHelper.showCustomToast(this, "Contact deleted successfully", ToastHelper.ToastType.SUCCESS)
         })
         contactList.adapter = adapter
     }
 
     private fun showEditDialog(contact: Contact) {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_edit_contact, null)
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("Edit Contact")
+        builder.setView(dialogView)
 
-        val layout = LinearLayout(this)
-        layout.orientation = LinearLayout.VERTICAL
+        val dialog = builder.create()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
-        val nameInput = EditText(this)
+        val nameInput = dialogView.findViewById<EditText>(R.id.editName)
+        val phoneInput = dialogView.findViewById<EditText>(R.id.editPhone)
+        val emailInput = dialogView.findViewById<EditText>(R.id.editEmail)
+        val btnSave = dialogView.findViewById<android.widget.Button>(R.id.btnSave)
+        val btnCancel = dialogView.findViewById<android.widget.Button>(R.id.btnCancel)
+
         nameInput.setText(contact.name)
-        layout.addView(nameInput)
-
-        val phoneInput = EditText(this)
         phoneInput.setText(contact.phone)
-        layout.addView(phoneInput)
-
-        val emailInput = EditText(this)
         emailInput.setText(contact.email)
-        layout.addView(emailInput)
 
-        builder.setView(layout)
-
-        builder.setPositiveButton("Save") { _, _ ->
+        btnSave.setOnClickListener {
             val newName = nameInput.text.toString()
             val newPhone = phoneInput.text.toString()
             val newEmail = emailInput.text.toString()
@@ -78,11 +74,15 @@ class MainActivity : AppCompatActivity() {
             if (index != -1) {
                 contacts[index] = newContact
                 adapter.notifyItemChanged(index)
-                Toast.makeText(this, "Contact updated", Toast.LENGTH_SHORT).show()
+                ToastHelper.showCustomToast(this, "Contact updated successfully", ToastHelper.ToastType.SUCCESS)
             }
+            dialog.dismiss()
         }
-        builder.setNegativeButton("Cancel", null)
 
-        builder.show()
+        btnCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 }

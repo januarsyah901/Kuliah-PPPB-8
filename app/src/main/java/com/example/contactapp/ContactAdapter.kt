@@ -23,6 +23,14 @@ class ContactAdapter(
         holder.name.text = contact.name
         holder.phone.text = contact.phone
         holder.email.text = contact.email
+
+        // Set initial letter for avatar
+        holder.initial.text = if (contact.name.isNotEmpty()) {
+            contact.name.first().uppercase()
+        } else {
+            "?"
+        }
+
         holder.editButton.setOnClickListener { onEdit(contact) }
         holder.deleteButton.setOnClickListener { onDelete(contact) }
     }
@@ -30,6 +38,7 @@ class ContactAdapter(
     override fun getItemCount() = contacts.size
 
     class ContactViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val initial: TextView = itemView.findViewById(R.id.contact_initial)
         val name: TextView = itemView.findViewById(R.id.contact_name)
         val phone: TextView = itemView.findViewById(R.id.contact_phone)
         val email: TextView = itemView.findViewById(R.id.contact_email)
