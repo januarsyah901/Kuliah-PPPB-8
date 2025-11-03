@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class ContactAdapter(
-    private val contacts: MutableList<Contact>,
+    private var contacts: List<Contact>,  // ← Ubah dari MutableList jadi List
     private val onEdit: (Contact) -> Unit,
     private val onDelete: (Contact) -> Unit
 ) : RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
@@ -36,6 +36,12 @@ class ContactAdapter(
     }
 
     override fun getItemCount() = contacts.size
+
+    // ✅ Method untuk update data dari MainActivity
+    fun updateData(newContacts: List<Contact>) {
+        contacts = newContacts
+        notifyDataSetChanged()
+    }
 
     class ContactViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val initial: TextView = itemView.findViewById(R.id.contact_initial)
